@@ -79,7 +79,7 @@ EOT;
                         <tbody>
                             <tr>
                                 <?php foreach (range('A','Z') as $letter) { ?>
-                                    <td class="<?= ($_GET['starts-with'] ?? null) == $letter ? 'selected' : '' ?>"><a href="<?= "?starts-with==$letter" ?>"><?= $letter ?></td>
+                                    <td class="<?= ($_GET['starts-with'] ?? null) == $letter ? 'selected' : '' ?>"><a href="<?= "?starts-with=$letter" ?>"><?= $letter ?></td>
                                 <?php } ?>
                             </tr>
                         </tbody>

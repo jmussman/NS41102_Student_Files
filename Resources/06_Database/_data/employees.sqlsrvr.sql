@@ -1,22 +1,19 @@
--- employees.sqlite.sql
+-- employees.sqlsrvr.sql
 -- Copyright © 2019 NextStep IT Training. All rights reserved.
 --
 -- Text encoding used: UTF-8
 --
 
-PRAGMA foreign_keys = off;
-BEGIN TRANSACTION;
+USE HR;
 
 -- Table: employees
--- The employee_id is not an identity column. SQLITE has the feature that the row id is inserted into the first column when the first
--- column is not provided during an insert operation, effectively making it an identity column. For the purposes of the lab, and because
--- the number of rows is less than 1000, indexes on searchable or orderable columns (employee_no, last_name, etc.) have been ignored. The
--- inclusing of the photo data is intentional: when images are stored in external files the consistency can fail, and this way the
--- data is backed up as part of a regular database backup.
+-- For the purposes of the lab, and because the number of rows is less than 1000, indexes on searchable or orderable columns (employee_no,
+-- last_name, etc.) have been ignored. The inclusing of the photo data is intentional: when images are stored in external files the
+-- consistency can fail, and this way the data is backed up as part of a regular database backup.
 --
-DROP TABLE IF EXISTS employees;
+DROP TABLE IF EXISTS dbo.employees;
 CREATE TABLE employees (
-    employee_id INTEGER PRIMARY KEY,
+    employee_id INT IDENTITY PRIMARY KEY,
     version INTEGER NOT NULL,
     hire_date DATE NOT NULL,
     employee_no INTEGER NOT NULL UNIQUE,
@@ -29,9 +26,9 @@ CREATE TABLE employees (
     state_province VARCHAR (50),
     postal_code VARCHAR (50),
     country_code VARCHAR (50),
-    salary_employee TINYINT NOT NULL,
+    salary_employee BIT NOT NULL,
     rate DECIMAL (10, 2) NOT NULL,
-    photo BLOB
+    photo VARBINARY(MAX)
 );
 
 -- This data was generated at mockaroo.com.
@@ -536,6 +533,3 @@ INSERT INTO employees (version, hire_date, employee_no, government_no, first_nam
 INSERT INTO employees (version, hire_date, employee_no, government_no, first_name, last_name, email, street, city, state_province, postal_code, country_code, salary_employee, rate) VALUES (0, '1988-12-08', 100498, '410-21-5842', 'Jeno', 'McGing', 'jmcgingdt@yolasite.com', '0 Sunnyside Alley', 'Puhja', NULL, NULL, 'EE', 1, 122957);
 INSERT INTO employees (version, hire_date, employee_no, government_no, first_name, last_name, email, street, city, state_province, postal_code, country_code, salary_employee, rate) VALUES (0, '2005-08-01', 100499, '393-97-8004', 'Calla', 'Gaythorpe', 'cgaythorpedu@hhs.gov', '78 Aberg Point', 'Novoorsk', NULL, '462800', 'RU', 0, 39);
 INSERT INTO employees (version, hire_date, employee_no, government_no, first_name, last_name, email, street, city, state_province, postal_code, country_code, salary_employee, rate) VALUES (0, '1984-12-09', 100500, '792-51-9450', 'Lavinia', 'Nelthorp', 'lnelthorpdv@tinyurl.com', '57369 Hoepker Drive', 'Gelgaudiškis', NULL, '71085', 'LT', 0, 28);
-
-COMMIT TRANSACTION;
-PRAGMA foreign_keys = on;
