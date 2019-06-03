@@ -1,0 +1,231 @@
+/* application.css
+    Copyright © 2019 NextStep IT Training. All rights reserved.
+ */
+
+/* General styles */
+
+html, body {
+    margin: 0;
+    font-size: 10pt;
+    font-family: verdana, arial, helvetica, sans-serif;
+    height: 100vh;
+    max-height: 100vh;
+}
+
+/* Header, footer, and body styles */
+
+div[id=header] {
+    position: relative;
+    background-image: url(../images/header-background.png);
+    background-repeat: repeat-x;
+    height: 150px;
+    margin: 0 0 10px 0;
+}
+
+div[id=menu] {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+div[id=menu] a {
+    font-family: Verdana, Geneva, Tahoma, Helvetica, Arial, sans-serif;
+    font-size: 12pt;
+    color: navy;
+    text-decoration: none;
+    margin: 0 10px 0 0;
+}
+
+div[id=menu] a:hover {
+    color: red;
+}
+
+footer {
+    margin-top: 10px;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    font-variant: small-caps;
+    color: gray;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* main
+    The height of main is calulated based on the height of the view port minus the height occupied by the header
+    and the footer. main should either have the class y-scroll set to cause it to scroll on overflow, or the
+    contents should resize itself to stay inside of this height (look to the list div as an example).
+ */
+div[id=main] {
+    height: calc(100% - 200px);
+    max-height: calc(100% - 200px);
+}
+
+/* content
+    content has a max height slightly less than main on purpose. If content has the same height, it will trigger an
+    overflow in main and cause the scrollbar to appear if main has the class y-scroll. If content is slightly less, then
+    even though what the div contains may extend vertically past it, the scroll bar in main won't be triggered unless
+    that actuall happens.
+ */
+div[id=content] {
+    width: 90%;
+    margin-left: 5%;
+    height: calc(100% - 20px);
+    max-height: calc(100% - 20px);
+}
+
+div.y-scroll {
+    overflow-y: auto;
+}
+
+/* Index and search styles */
+
+div.index-search {
+    margin-bottom: 10px;
+    font-family: "Lucida Console", Monaco, monospace, sans-serif;
+    font-size: 12pt;
+}
+
+div.index {
+    float: left;
+}
+
+table.index {
+    border-collapse: collapse;
+}
+
+table.index td {
+    background-color: lightgray;
+    border: 1px solid darkgray;
+    font-size: 12pt;
+    padding: 5px;
+}
+
+table.index td.selected {
+    background-color: white;
+} 
+
+table.index a {
+    text-decoration: none;
+    color: black;
+}
+
+div.search {
+    float: right;
+}
+
+input.search[type='text'] {
+    padding: 5px;
+}
+
+div.clear-all {
+    clear: both;
+}
+
+/* List styles */
+
+div.list {
+    border: 1px solid gray;
+    height: calc(100% - 50px);
+    max-height: calc(100% - 50px);
+}
+
+table.list {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.list tr:nth-child(even) {
+    background-color: lightgray;
+}
+
+table.list tr:nth-child(odd) {
+    background-color: white;
+}
+
+table.list th {
+    background-color: darkgray;
+    color: white;
+}
+
+table.list td, table.list th {
+    border: 1px solid gray;
+}
+
+table.list td.minimum-width, table.list th.minimum-width {
+    width: 10%;
+    white-space: nowrap;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-right {
+    text-align: right;
+}
+
+table.list a {
+    color: black;
+    text-decoration: none;
+}
+
+table.list a:hover {
+    font-weight: bold;
+}
+
+/* Input-form styles */
+
+div.error-message, span.error-message {
+    color: red;
+}
+
+input {
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 10pt;
+}
+
+input[type=text], input[type=password] {
+    width: 300px;
+}
+
+input[type='button'], input[type='reset'], input[type='submit'] {
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 12pt;
+}
+
+table.form {
+    border: 0;
+}
+
+td.form-error, td.form-field, td.form-label {
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 11pt;
+}
+
+td.form-error {
+    color: red;
+}
+
+td.form-label {
+    text-align: right;
+}
+
+span.form-field {
+    font-size: 10pt;    /* Input field fonts appear a point size smaller than set, this compensates for that. */
+}
+
+div.photo {
+    width: 1in;
+    float: right;
+}
+
+img.photo {
+    width: 1in;
+    height: 1in;
+    border: 1px solid gray;
+}
