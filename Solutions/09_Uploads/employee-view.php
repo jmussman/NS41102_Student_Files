@@ -507,6 +507,7 @@ function validateEmployeeData() {
                                 <input type="file" class="photo" name="photo" id="photo" />
                             </div>
                         </td>
+                        <td class=""form-error"></td>
                     </tr>
 
                     <tr>

@@ -90,7 +90,7 @@ EOT;
             $_SESSION['starts-with'] = 'A';     // Default search pattern.
         }
 
-        if (!empty($_GET['starts-with']) and ctype_upper($_GET['starts-with'])) {
+        if (ctype_upper($_GET['starts-with'] ?? null)) {
 
             $_SESSION['starts-with'] = $_GET['starts-with'];
             unset($_SESSION['like']);

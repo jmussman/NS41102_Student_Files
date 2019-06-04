@@ -60,7 +60,6 @@ function main() {
 
 function getEmployee($id) {
 
-    global $generalErrors;
     global $version, $hire_date, $employee_no, $government_no, $first_name, $last_name, $email, $street, $city, $state_province, $postal_code, $country, $salary_employee, $rate;
 
     $db = $db = new PDO(DSN);

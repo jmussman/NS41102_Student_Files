@@ -31,10 +31,26 @@ function main() {
         die();
     }
 
-    // Look for instructions in the query string.
+    // Look for instruction in the query string; save them in the session and fall back to the session if they are not there.
 
-    $like = ctype_upper($_GET['starts-with'] ?? null) ? "{$_GET['starts-with']}%" : 'A%';
-    $like = !empty($_GET['like']) ? "%{$_GET['like']}%" : $like;
+    if (empty($_SESSION['like'])) {
+
+        $_SESSION['starts-with'] = 'A';     // Default search pattern.
+    }
+
+    if (ctype_upper($_GET['starts-with'] ?? null)) {
+
+        $_SESSION['starts-with'] = $_GET['starts-with'];
+        unset($_SESSION['like']);
+
+    } elseif (!empty($_GET['like'])) {
+
+        $_SESSION['like'] = $_GET['like'];
+        unset($_SESSION['starts-with']);
+    }
+
+    !empty($_SESSION['starts-with']) and $like = "{$_SESSION['starts-with']}%";
+    !empty($_SESSION['like']) and $like = "%{$_SESSION['like']}%";
 
     // Establish the database connection and query.
 

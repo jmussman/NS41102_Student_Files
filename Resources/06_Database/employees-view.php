@@ -88,7 +88,7 @@ function main()
                     </thead>
 
                     <tbody>
-                    <?php // TODO: the loop to fetch rows goes here, and the table cells need to display the results ?>
+                    <?php // TODO: the loop to fetch rows goes around this table row, and the table cells need to display the results ?>
                     <tr>
                         <td class="minimum-width align-center"></td>
                         <td></td>
@@ -96,7 +96,6 @@ function main()
                         <td class="minimum-width align-center"></td>
                         <td class="minimum-width align-right"></td>
                     </tr>
-                    <?php } ?>
                     </tbody>
 
                 </table>
